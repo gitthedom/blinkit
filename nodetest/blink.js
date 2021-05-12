@@ -5,14 +5,17 @@ var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function ever
 function blinkLED() {
   if (LED.readSync() === 0) {
     LED.writeSync(1);
+    console.log('On');
   } else {
     LED.writeSync(0);
+    console.log('off');
   }
 }
 
 function endBlink() {
   clearInterval(blinkInterval);
   LED.writeSync(0);
+  console.log('Goodbye');
   LED.unexport();
 }
 
