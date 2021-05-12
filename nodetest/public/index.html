@@ -6,6 +6,7 @@
 <p><input type="checkbox" id="light"></p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script> <!-- include socket.io client side script -->
+<script src="randm.js"></script>
 <script>
 var socket = io(); //load socket.io-client and connect to the host that serves the page
 window.addEventListener("load", function(){ //when page loads
@@ -21,7 +22,7 @@ socket.on('light', function (data) { //get button status from client
 </script>
 
 <div id='rick-and-morty-characters'></div>
-<script src='randm.js'></script>
+
 
 </body>
 </html>
