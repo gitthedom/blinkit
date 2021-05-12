@@ -20,6 +20,7 @@ var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'bo
 // }
 
 http.createServer(function (req, res) {
+  console.log(req.url);
   fs.readFile(__dirname + req.url, function (err,data) {
     if (err) {
       res.writeHead(404);
