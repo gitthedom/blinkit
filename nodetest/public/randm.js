@@ -11,4 +11,4 @@ console.log('am I here?');
      characterElement.innerText = `Character Name: ${character.name}`;
      charactersDiv.append(characterElement);
    });
- }
+ };
