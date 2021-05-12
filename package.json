@@ -1,0 +1,22 @@
+{
+  "name": "blinkit",
+  "version": "1.0.0",
+  "description": "Make the lights blink",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitthedom/blinkit.git"
+  },
+  "author": "Dominic Formosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitthedom/blinkit/issues"
+  },
+  "homepage": "https://github.com/gitthedom/blinkit#readme",
+  "dependencies": {
+    "onoff": "^6.0.3"
+  }
+}
