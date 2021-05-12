@@ -1,4 +1,5 @@
 var http = require('http').createServer(handler); //require http server, and create server with function handler()
+var app = require('express')();
 var fs = require('fs'); //require filesystem module
 var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
