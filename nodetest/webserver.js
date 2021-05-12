@@ -25,7 +25,7 @@ var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'bo
 //app.use(express.static('public')); //Serves resources from public folder
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public');
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 var server = app.listen(8080);
