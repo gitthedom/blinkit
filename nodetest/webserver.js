@@ -1,4 +1,4 @@
-var http = require('http').createServer(handler); //require http server, and create server with function handler()
+var http = require('http').createServer(); //require http server, and create server with function handler()
 var static = require('node-static');
 //var fs = require('fs'); //require filesystem module
 var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
