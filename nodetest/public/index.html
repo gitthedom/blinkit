@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script src='randm.js' defer></script>
-</head>
+
 <body>
 
 <h1>Control LED light</h1>
@@ -24,6 +22,21 @@ socket.on('light', function (data) { //get button status from client
 </script>
 
 <div id='rick-and-morty-characters'><p>I'm working here</p></div>
+<script>
+  fetch('https://rickandmortyapi.com/api/character/')
+     .then(response => response.json())
+     .then(characters => showCharacters(characters.results));
 
+  console.log('am I here?');
+
+   var showCharacters = characters => {
+     const charactersDiv = document.querySelector('#rick-and-morty-characters');
+     characters.forEach(character => {
+       const characterElement = document.createElement('p');
+       characterElement.innerText = `Character Name: ${character.name}`;
+       charactersDiv.append(characterElement);
+     });
+   }
+</script>
 </body>
 </html>
