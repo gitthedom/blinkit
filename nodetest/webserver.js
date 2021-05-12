@@ -1,4 +1,4 @@
-var http = require('http')//.createServer(handler); //require http server, and create server with function handler()
+var http = require('http').createServer(handler); //require http server, and create server with function handler()
 var express = require('express');
 var app = express();
 var server = http.createServer(app);
@@ -8,27 +8,19 @@ var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(4, 'out'); //use GPIO pin 4 as output
 var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
 
-// http.listen(8080); //listen to port 8080
-//
-// function handler (req, res) { //create server
-//   fs.readFile(__dirname + "/public/index.html", function(err, data) { //read file index.html in public folder
-//     if (err) {
-//       res.writeHead(404, {'Content-Type': 'text/html'}); //display 404 on error
-//       return res.end("404 Not Found");
-//     }
-//     res.writeHead(200, {'Content-Type': 'text/html'}); //write HTML
-//     res.write(data); //write data from index.html
-//     return res.end();
-//   });
-// }
+http.listen(8080); //listen to port 8080
 
-//app.use(express.static('public')); //Serves resources from public folder
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/');
-});
-
-var server = app.listen(8080);
+function handler (req, res) { //create server
+  fs.readFile(__dirname + "/public/index.html", function(err, data) { //read file index.html in public folder
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'}); //display 404 on error
+      return res.end("404 Not Found");
+    }
+    res.writeHead(200, {'Content-Type': 'text/html'}); //write HTML
+    res.write(data); //write data from index.html
+    return res.end();
+  });
+}
 
 
 io.sockets.on('connection', function (socket) {// WebSocket Connection
