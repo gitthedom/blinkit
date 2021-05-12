@@ -18,7 +18,7 @@ function handler (req, res) { //create server
         res.writeHead(404, {'Content-Type': 'text/html'}); //display 404 on error
         return res.end("404 Not Found");
       }
-    )}
+    )
     res.writeHead(200, {'Content-Type': 'text/html'}); //write HTML
     res.write(data); //write data from index.html
     return res.end();
