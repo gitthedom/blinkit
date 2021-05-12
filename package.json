@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/gitthedom/blinkit#readme",
   "dependencies": {
-    "onoff": "^6.0.3"
+    "onoff": "^6.0.3",
+    "socket.io": "^4.1.1"
   }
 }
