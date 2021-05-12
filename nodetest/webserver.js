@@ -1,5 +1,4 @@
 var http = require('http').createServer(handler); //require http server, and create server with function handler()
-var app = require('express')();
 var fs = require('fs'); //require filesystem module
 var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
@@ -14,6 +13,11 @@ function handler (req, res) { //create server
       res.writeHead(404, {'Content-Type': 'text/html'}); //display 404 on error
       return res.end("404 Not Found");
     }
+    fs.readFile(__dirname + '/public/js/randm.js', function(err, data) { //read file index.html in public folder
+      if (err) {
+        res.writeHead(404, {'Content-Type': 'text/html'}); //display 404 on error
+        return res.end("404 Not Found");
+      }
     res.writeHead(200, {'Content-Type': 'text/html'}); //write HTML
     res.write(data); //write data from index.html
     return res.end();
@@ -37,10 +41,6 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
       console.log(lightvalue);
     }
   });
-});
-
-app.get('/public/js/randm.js', function(req, res){
-    res.sendFile(__dirname + '/public/js/randm.js');
 });
 
 process.on('SIGINT', function () { //on ctrl+c
