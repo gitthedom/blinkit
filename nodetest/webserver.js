@@ -38,6 +38,10 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
   });
 });
 
+app.get('/public/js/randm.js', function(req, res){
+    res.sendFile(__dirname + '/public/js/randm.js');
+});
+
 process.on('SIGINT', function () { //on ctrl+c
   LED.writeSync(0); // Turn LED off
   LED.unexport(); // Unexport LED GPIO to free resources
