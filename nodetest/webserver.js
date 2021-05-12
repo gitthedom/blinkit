@@ -1,7 +1,8 @@
 var http = require('http')//.createServer(handler); //require http server, and create server with function handler()
+var app = express();
+var server = http.createServer(app);
 var fs = require('fs'); //require filesystem module
 var express = require('express');
-var app = express();
 var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(4, 'out'); //use GPIO pin 4 as output
@@ -21,8 +22,11 @@ var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'bo
 //   });
 // }
 
-app.use(express.static('public')); //Serves resources from public folder
+//app.use(express.static('public')); //Serves resources from public folder
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
 var server = app.listen(8080);
 
