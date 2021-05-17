@@ -3,7 +3,7 @@ var fs = require('fs'); //require filesystem module
 var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(4, 'out'); //use GPIO pin 4 as output
-var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
+var pushButton = new Gpio(17, 'in', 'rising'); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
 
 http.listen(8080); //listen to port 8080
 
@@ -27,7 +27,12 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
       console.error('There was an error', err); //output error message to console
       return;
     }
-    lightvalue = value;
+    //lightvalue = value;
+    if (lightvalue == 0) {
+      lightvalue = 1;
+    } else {
+      lightvalue = 0;
+    }
     socket.emit('light', lightvalue); //send button status to client
   });
   socket.on('light', function(data) { //get light switch status from client
