@@ -27,7 +27,12 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
       console.error('There was an error', err); //output error message to console
       return;
     }
-    lightvalue = value;
+    //lightvalue = value;
+    if (lightvalue == 0) {
+      lightvalue = 1;
+    } else {
+      lightvalue = 0;
+    }
     socket.emit('light', lightvalue); //send button status to client
   });
   socket.on('light', function(data) { //get light switch status from client
